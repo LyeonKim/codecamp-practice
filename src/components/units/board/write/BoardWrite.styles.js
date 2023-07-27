@@ -27,7 +27,7 @@ export const FormWrap = styled.div `
 export const InputWrap = styled.div `
     display: flex;
     flex-flow: column;
-    gap: 14px;
+    gap: 10px;
 `
 export const Label = styled.label `
     font-size: 18px;
@@ -38,13 +38,47 @@ export const Input = styled.input `
     border: 1px solid #BDBDBD;
     height: 52px;
     font-size: 17px;
+
+    &::placeholder { color : #BDBDBD; }
 `
+export const ZipcodeWrapper = styled.div `
+    display: flex;
+    gap: 16px;
+`
+export const InputAddress = styled.input `
+    box-sizing: border-box;
+    width: 90px;
+    padding: 10px 16px;
+    border: 1px solid #BDBDBD;
+    height: 52px;
+    font-size: 17px;
+    display: inline-block;
+
+    &::placeholder { color : #BDBDBD; }
+`
+export const BtnAddress = styled.button `
+    box-sizing: border-box;
+    display: inline-block;
+    border: none;
+    line-height: 52px;
+    height: 52px;
+    padding: 0 16px;
+    color: #fff;
+    background: #000;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+`
+
 export const Textarea = styled.textarea `
     box-sizing: border-box;
     padding: 18px 16px;
     border: 1px solid #BDBDBD;
     height: 480px;
+    resize: none;
     font-size: 17px;
+
+    &::placeholder { color : #BDBDBD; }
 `
 
 export const ButtonWrap = styled.div`
@@ -59,10 +93,16 @@ export const Btn = styled.button `
     line-height: 52px;
     height: 52px;
     padding: 0 60px;
-    background: #FFD600;
+    border: 1px solid #efefef;
     font-weight: 500;
     font-size: 16px;
     cursor: pointer;
+
+    ${(props) =>
+        props.isActive && `
+            background: hsla(50, 100%, 50%, 1);
+        `
+    };
 `
 export const BtnCancel = styled.button `
     box-sizing: border-box;
@@ -128,5 +168,6 @@ export const InputFile = styled.input `
     position: absolute;
     clip: rect(0, 0, 0, 0);
     
+    &::placeholder { color : #BDBDBD; }
 `
 

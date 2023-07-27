@@ -2,8 +2,10 @@ import BoardWriteCompo from "../../../src/components/units/board/write/BoardWrit
 
 export default function NewBoardPage () {
     return ( //new
-        <BoardWriteCompo 
-            isEdit={false}
-        />
+        <>
+            <BoardWriteCompo 
+                isEdit={false}
+            />
+        </>
     )
 }

@@ -7,6 +7,8 @@ import { useState } from "react";
 export default function BoardWriteCompo(props){
     const router = useRouter();
 
+    const [ isActive, setIsActive ] = useState(false);
+
     const [ createBoard ] = useMutation(CREATE_BOARD);
     const [ writer, setWriter ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -14,11 +16,40 @@ export default function BoardWriteCompo(props){
     const [ contents, setContents ] = useState('');
     const [ youtubeUrl, setYoutubeUrl ] = useState('');
     
-    const onChangeWriter = (e) => setWriter(e.target.value);
-    const onChangePassword = (e) => setPassword(e.target.value);
-    const onChangeTitle = (e) => setTitle(e.target.value);
-    const onChangeContents = (e) => setContents(e.target.value);
-    const onChangeYoutubeUrl = (e) => setYoutubeUrl(e.target.value);
+    const onChangeWriter = (e) => {
+        setWriter(e.target.value);
+
+        if(e.target.value && password && title && contents && youtubeUrl != "" ) setIsActive(true);
+        else setIsActive(false);
+    }
+
+    const onChangePassword = (e) => {
+        setPassword(e.target.value);
+
+        if(e.target.value && writer && title && contents && youtubeUrl != "" ) setIsActive(true);
+        else setIsActive(false);
+    }
+
+    const onChangeTitle = (e) => {
+        setTitle(e.target.value);
+
+        if(e.target.value && writer && password && contents && youtubeUrl != "" ) setIsActive(true);
+        else setIsActive(false);
+    }
+
+    const onChangeContents = (e) => {
+        setContents(e.target.value);
+
+        if(e.target.value && writer && password && title && youtubeUrl != "" ) setIsActive(true);
+        else setIsActive(false);
+    }
+
+    const onChangeYoutubeUrl = (e) => {
+        setYoutubeUrl(e.target.value);
+
+        if(e.target.value && writer && password && title && contents != "" ) setIsActive(true);
+        else setIsActive(false);
+    }
     
     const onClickCreateBoard = async () => { //등록
         try {
@@ -46,17 +77,19 @@ export default function BoardWriteCompo(props){
 
     const [ updateBoard ] = useMutation(UPDATE_BOARD);
 
-    const onClickEditBoard = async () => { //등록
+    const onClickEditBoard = async () => { //수정 업데이트
         try {
             const myVariables = {}
-            if(title) myVariables.title = title;
+            // if(title) myVariables.title = title;
             if(writer) myVariables.writer = writer;
             if(contents) myVariables.contents = contents;
             if(youtubeUrl) myVariables.youtubeUrl = youtubeUrl;
 
             const result = await updateBoard({
                 variables: {
-                    updateBoardInput: myVariables, password: password, boardId: String(router.query.pageIdx)
+                    boardId: String(router.query.pageIdx),
+                    password: password, 
+                    updateBoardInput: myVariables
                 }
             })
 
@@ -82,6 +115,8 @@ export default function BoardWriteCompo(props){
 
             onClickEditBoard={onClickEditBoard}
             data={props.data} //수정 페이지에서 fetchBoard값을 defaultValue로
+
+            isActive={isActive}
         />
     )
 }

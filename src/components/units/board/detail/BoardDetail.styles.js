@@ -36,7 +36,6 @@ export const UserWrap = styled.div `
 `
 export const TxtWrap = styled.div `
     height: 100%;
-
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -71,12 +70,19 @@ export const ContentWrap = styled.div `
 export const ImgWrap = styled.div `
     width: 100%;
     height: auto;
+    marin: 0 auto;
     object-fit: contain;
+
+    & > * { width: 100%; height: auto; }
 `
 
-export const ContentTxt = styled.div `
+export const ContentTxt = styled.p `
     font-size: 16px;
     padding: 10px 0;
+    width:100%;
+    height: auto;
+    word-break: break-word;
+    
     // border: 1px solid red;
 `
 
@@ -85,7 +91,8 @@ export const BtnWrap = styled.div`
     display: flex;
     gap: 24px;
     justify-content: center;
-    margin-bottom: 87px;
+    padding-bottom: 87px;
+    border-bottom: 1px solid #D9D9D9;
 `
 
 export const Btn = styled.button `

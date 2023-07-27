@@ -19,6 +19,8 @@ export default function BoardWriteUI(props){
                 <S.InputWrap>
                     <S.Label htmlFor="writer">작성자</S.Label>
                     <S.Input
+                        readOnly={props.isEdit ? true : false}
+                        disabled={props.isEdit ? true : false}
                         onChange={props.onChangeWriter}
                         defaultValue={props.data?.fetchBoard.writer}
                         type="text" id="writer" placeholder="작성자 이름을 작성해주세요."/>
@@ -29,6 +31,15 @@ export default function BoardWriteUI(props){
                         onChange={props.onChangeContents}
                         defaultValue={props.data?.fetchBoard.contents}
                         type="text" id="content" placeholder="내용을 작성해주세요."/>
+                </S.InputWrap>
+                <S.InputWrap>
+                    <S.Label htmlFor="address">주소</S.Label>
+                    <S.ZipcodeWrapper>
+                        <S.InputAddress placeholder="07250"/>
+                        <S.BtnAddress type="search">우편번호 검색</S.BtnAddress>
+                    </S.ZipcodeWrapper>
+                    <S.Input type="text" id="address" placeholder=""/>
+                    <S.Input type="text" id="address" placeholder=""/>
                 </S.InputWrap>
                 <S.InputWrap>
                     <S.Label htmlFor="youtubeUrl">유투브</S.Label>
@@ -72,6 +83,9 @@ export default function BoardWriteUI(props){
                 <S.Btn 
                     type="button"
                     onClick={props.isEdit ? props.onClickEditBoard : props.onClickCreateBoard }
+                    isActive={props.isEdit ? true : props.isActive }
+                    disabled={props.isEdit ? false : !props.isActive }
+                        //등록하기 Btn 활성화 // 등록하기 일 때만 버튼 활성화 조건 부여 //수정하기는 항상 활성화
                 >{props.isEdit ? "수정" : "등록"}하기</S.Btn>
             </S.ButtonWrap>
         </S.BoardWrap>
