@@ -92,7 +92,6 @@ export const BtnWrap = styled.div`
     gap: 24px;
     justify-content: center;
     padding-bottom: 87px;
-    border-bottom: 1px solid #D9D9D9;
 `
 
 export const Btn = styled.button `

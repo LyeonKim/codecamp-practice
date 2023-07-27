@@ -21,9 +21,10 @@ export const CommentListWrap= styled.div `
 export const CommentWrap= styled.div `
     flex-grow: 1;
     display: flex;
-    border-bottom: 1px solid #BDBDBD;
     padding: 20px 0 18px;
     gap: 10px;
+
+    border-bottom: 1px solid #D9D9D9;
 `
 
 export const ProfileImg= styled.div `
@@ -37,31 +38,56 @@ export const ContentWrap= styled.div `
 
     display: flex;
     flex-flow: column;
+
+    & > p { line-height: 1.4; }
 `
 export const ContentTopWrap= styled.div `
     width: auto;
     display: flex;
+    justify-content: space-between;
     gap: 12px;
+`
+export const Left= styled.div `
+    display: flex;
+    gap: 8px;
+
 `
 export const Name= styled.p `
     font-size: 18px;
     font-weight: bold;
+`
+export const BtnWrap= styled.div `
+    display: flex;
+    gap: 8px;
+
+    & > button {
+        width: 24px;
+        height: 24px;
+        font-size: 0px;
+        border: none;
+        padding: 4px;
+        cursor: pointer;
+    }
+`
+export const BtnEdit= styled.button `
+    background: url('/images/icon-edit.png') no-repeat 50% 50%/ 24px 24px;
+`
+export const BtnDelete= styled.button `
+    background: url('/images/icon-delete.png') no-repeat 50% 50%/ 24px 24px;
 `
 
 export const Comment= styled.p `
     margin-bottom: 20px;
 `
 export const Time= styled.p `
-    color: #ddd;
+    color: #BDBDBD;
     font-size: 12px;
 `
 
 export const Ratings= styled.ul ``
 export const Rate= styled.li `
 `
-export const BtnWrap= styled.div ``
-export const BtnEdit= styled.div ``
-export const BtnDelete= styled.div ``
+
 
 
 // export const aa= styled.div ``

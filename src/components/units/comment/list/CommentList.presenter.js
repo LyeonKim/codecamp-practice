@@ -17,21 +17,19 @@ export default function CommentListUI(props) {
                             </S.ProfileImg>
                             <S.ContentWrap>
                                 <S.ContentTopWrap>
-                                    <S.Name>
-                                        {comment.writer}
-                                    </S.Name>
-                                    <S.Ratings>
-                                        <S.Rate>
-                                            {comment.rating}
-                                        </S.Rate>
-                                    </S.Ratings>
+                                    <S.Left>
+                                        <S.Name>{comment.writer}</S.Name>
+                                        <S.Ratings>
+                                            <S.Rate>{comment.rating}</S.Rate>
+                                        </S.Ratings>
+                                    </S.Left>
+                                    <S.BtnWrap>
+                                        <S.BtnEdit>댓글 수정</S.BtnEdit>
+                                        <S.BtnDelete>댓글 삭제</S.BtnDelete>
+                                    </S.BtnWrap>    
                                 </S.ContentTopWrap>
-                                <S.Comment>
-                                    {comment.contents}
-                                </S.Comment>
-                                <S.Time>
-                                    {comment.createdAt}
-                                </S.Time>
+                                <S.Comment>{comment.contents}</S.Comment>
+                                <S.Time>{comment.createdAt}</S.Time>
                             </S.ContentWrap>
                         </S.CommentWrap>
                     )
