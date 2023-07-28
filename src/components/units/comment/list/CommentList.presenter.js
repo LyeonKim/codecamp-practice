@@ -1,4 +1,5 @@
 import * as S from "./CommentList.styles"
+import { getDate } from "../../../common/libraries/utils";
 
 export default function CommentListUI(props) {
     console.log(props.data?.fetchBoardComments);
@@ -24,12 +25,13 @@ export default function CommentListUI(props) {
                                         </S.Ratings>
                                     </S.Left>
                                     <S.BtnWrap>
+                                        {/* <S.BtnEdit onClick={props.onClickUpdateComment}>댓글 수정</S.BtnEdit> */}
                                         <S.BtnEdit>댓글 수정</S.BtnEdit>
-                                        <S.BtnDelete>댓글 삭제</S.BtnDelete>
+                                        <S.BtnDelete onClick={props.onClickDeleteComment}>댓글 삭제</S.BtnDelete>
                                     </S.BtnWrap>    
                                 </S.ContentTopWrap>
                                 <S.Comment>{comment.contents}</S.Comment>
-                                <S.Time>{comment.createdAt}</S.Time>
+                                <S.Time>{getDate(comment.createdAt)}</S.Time>
                             </S.ContentWrap>
                         </S.CommentWrap>
                     )

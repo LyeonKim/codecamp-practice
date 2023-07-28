@@ -28,6 +28,16 @@ export const InputWrap = styled.div `
     display: flex;
     flex-flow: column;
     gap: 10px;
+    width: auto;
+    flex-shrink: 1;
+`
+export const RowWrap = styled.div `
+    width: 100%;
+    display: flex;
+    flex-flow: no-wrap;
+    gap: 20px;
+
+    & > div { flex-grow: 1; }
 `
 export const Label = styled.label `
     font-size: 18px;
@@ -40,6 +50,11 @@ export const Input = styled.input `
     font-size: 17px;
 
     &::placeholder { color : #BDBDBD; }
+
+    ${(props) => props.isError 
+        ? `border: 3px solid red`
+        : ""
+    }
 `
 export const ZipcodeWrapper = styled.div `
     display: flex;

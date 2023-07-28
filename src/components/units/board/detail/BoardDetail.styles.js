@@ -55,6 +55,7 @@ export const Writer = styled.p `
 export const WriteDate = styled.p `
     font-size: 15px;
     color: #828282;
+    margin-top: 4px;
 `
 
 

@@ -8,6 +8,24 @@ export default function BoardWriteUI(props){
         <S.BoardWrap className="wrap">
             <S.Title>게시물 {props.isEdit ? "수정" : "등록"}</S.Title>
             <S.FormWrap>
+                <S.RowWrap>
+                    <S.InputWrap>
+                        <S.Label htmlFor="writer">작성자</S.Label>
+                        <S.Input
+                            readOnly={props.isEdit ? true : false}
+                            disabled={props.isEdit ? true : false}
+                            onChange={props.onChangeWriter}
+                            defaultValue={props.data?.fetchBoard.writer}
+                            type="text" id="writer" placeholder="작성자 이름을 작성해주세요."/>
+                    </S.InputWrap>
+                    <S.InputWrap>
+                        <S.Label htmlFor="pwd">비밀번호</S.Label>
+                        <S.Input
+                            onChange={props.onChangePassword}
+                            isError={props.isError}
+                            type="text" id="pwd" placeholder="비밀번호를 작성해주세요."/>
+                    </S.InputWrap>
+                </S.RowWrap>
                 <S.InputWrap>
                     <S.Label htmlFor="title">제목</S.Label>
                     <S.Input 
@@ -16,15 +34,7 @@ export default function BoardWriteUI(props){
                         defaultValue={props.data?.fetchBoard.title}
                         type="text" id="title" placeholder="제목을 작성해주세요."/>
                 </S.InputWrap>
-                <S.InputWrap>
-                    <S.Label htmlFor="writer">작성자</S.Label>
-                    <S.Input
-                        readOnly={props.isEdit ? true : false}
-                        disabled={props.isEdit ? true : false}
-                        onChange={props.onChangeWriter}
-                        defaultValue={props.data?.fetchBoard.writer}
-                        type="text" id="writer" placeholder="작성자 이름을 작성해주세요."/>
-                </S.InputWrap>
+                
                 <S.InputWrap>
                     <S.Label htmlFor="content">내용</S.Label>
                     <S.Textarea
@@ -69,10 +79,7 @@ export default function BoardWriteUI(props){
                     </S.AddImages>
                 </S.InputWrap>
                 <S.InputWrap>
-                    <S.Label htmlFor="pwd">비밀번호</S.Label>
-                    <S.Input
-                        onChange={props.onChangePassword}
-                        type="text" id="pwd" placeholder="비밀번호를 작성해주세요."/>
+                    
                 </S.InputWrap>
             </S.FormWrap>
             <S.ButtonWrap>

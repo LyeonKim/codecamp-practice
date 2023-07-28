@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@apollo/client"
+import { useMutation } from "@apollo/client"
 import BoardWriteUI from "./BoardWrite.presenter"
 import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries"
 import { useRouter } from "next/router";
@@ -8,6 +8,7 @@ export default function BoardWriteCompo(props){
     const router = useRouter();
 
     const [ isActive, setIsActive ] = useState(false);
+    const [ isError, setIsError ] = useState(false);
 
     const [ createBoard ] = useMutation(CREATE_BOARD);
     const [ writer, setWriter ] = useState('');
@@ -80,24 +81,30 @@ export default function BoardWriteCompo(props){
     const onClickEditBoard = async () => { //수정 업데이트
         try {
             const myVariables = {}
-            // if(title) myVariables.title = title;
-            if(writer) myVariables.writer = writer;
+            if(title) myVariables.title = title;
             if(contents) myVariables.contents = contents;
             if(youtubeUrl) myVariables.youtubeUrl = youtubeUrl;
 
-            const result = await updateBoard({
-                variables: {
-                    boardId: String(router.query.pageIdx),
-                    password: password, 
-                    updateBoardInput: myVariables
-                }
-            })
-
-            console.log('[Edit]result:',result);
-            router.push(`/boards/${router.query.pageIdx}`);
+            if(!contents && !title && !youtubeUrl){
+                alert('수정된 내용이 없습니다.')
+            }  else {
+                const result = await updateBoard({
+                    variables: {
+                        boardId: String(router.query.pageIdx),
+                        password: password, 
+                        updateBoardInput: myVariables
+                    }
+                })
+                console.log('[Edit]result:',result);
+                router.push(`/boards/${router.query.pageIdx}`);
+            }
             
         } catch(error) {
-            alert('게시글 수정에 실패하였습니다.')
+            setIsError(true);
+            if(!password) {
+                alert("비밀번호를 입력해주세요");
+                setIsError(true);
+            } else alert('비밀번호가 일치하지 않습니다.')
         }
     }
 
@@ -117,6 +124,7 @@ export default function BoardWriteCompo(props){
             data={props.data} //수정 페이지에서 fetchBoard값을 defaultValue로
 
             isActive={isActive}
+            isError={isError}
         />
     )
 }

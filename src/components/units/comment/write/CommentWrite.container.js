@@ -1,5 +1,5 @@
 import CommentWriteUI from "./CommentWrite.presenter"
-import { CREATE_COMMENT, FETCH_COMMENT } from "./CommentWrite.queries";
+import { CREATE_COMMENT, FETCH_COMMENT, UPDATE_COMMENT } from "./CommentWrite.queries";
 import { useState } from "react"
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -52,8 +52,9 @@ export default function CommentWriteCompo() {
         })
 
         console.log(result)
-
     }
+
+
 
     return(
         <>

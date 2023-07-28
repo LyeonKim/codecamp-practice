@@ -1,4 +1,6 @@
 import * as S from "./BoardDetail.styles"
+
+import { getDate } from "../../../common/libraries/utils" 
 import { Image } from "antd"
 
 export default function BoardDetailUI (props) {
@@ -10,7 +12,9 @@ export default function BoardDetailUI (props) {
                     <S.UserImg></S.UserImg>
                     <S.TxtWrap>
                         <S.Writer>{props.data?.fetchBoard.writer}</S.Writer>
-                        <S.WriteDate>Date: 2023.00.00</S.WriteDate>
+                        <S.WriteDate>
+                            {getDate(props.data?.fetchBoard?.createdAt)}
+                        </S.WriteDate>
                     </S.TxtWrap>
                 </S.UserWrap>
 
