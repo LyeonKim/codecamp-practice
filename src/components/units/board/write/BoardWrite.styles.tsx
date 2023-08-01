@@ -56,7 +56,7 @@ export const Input = styled.input `
         : ""
     }
 `
-export const ZipcodeWrapper = styled.div `
+export const zipCodeWrapper = styled.div `
     display: flex;
     gap: 16px;
 `

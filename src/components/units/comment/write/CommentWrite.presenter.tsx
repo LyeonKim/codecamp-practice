@@ -1,6 +1,7 @@
 import * as S from "./CommentWrite.styles"
+import { CommentWriteUIProps } from "./CommentWrite.types"
 
-export default function CommentWriteUI(props) {
+export default function CommentWriteUI(props: CommentWriteUIProps) {
 
     return(
         <>
@@ -15,7 +16,7 @@ export default function CommentWriteUI(props) {
                     onChange={props.onChangeWriter}
                 />
                 <S.Input
-                    type="password"
+                    // type="password"
                     placeholder="비밀번호"
                     onChange={props.onChangePassword}
                 />

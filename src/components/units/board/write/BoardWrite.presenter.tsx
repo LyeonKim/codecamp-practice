@@ -1,8 +1,8 @@
 import * as S from "./BoardWrite.styles"
+import { IBoardWriteUIProps } from "./BoardWrite.types"
 
-export default function BoardWriteUI(props){
+export default function BoardWriteUI(props: IBoardWriteUIProps){
     // console.log('props.data',props.data);
-
 
     return(
         <S.BoardWrap className="wrap">
@@ -22,7 +22,7 @@ export default function BoardWriteUI(props){
                         <S.Label htmlFor="pwd">비밀번호</S.Label>
                         <S.Input
                             onChange={props.onChangePassword}
-                            isError={props.isError}
+                            // isError={props.isError}
                             type="text" id="pwd" placeholder="비밀번호를 작성해주세요."/>
                     </S.InputWrap>
                 </S.RowWrap>
@@ -40,14 +40,14 @@ export default function BoardWriteUI(props){
                     <S.Textarea
                         onChange={props.onChangeContents}
                         defaultValue={props.data?.fetchBoard.contents}
-                        type="text" id="content" placeholder="내용을 작성해주세요."/>
+                        id="content" placeholder="내용을 작성해주세요."/>
                 </S.InputWrap>
                 <S.InputWrap>
                     <S.Label htmlFor="address">주소</S.Label>
-                    <S.ZipcodeWrapper>
+                    <S.zipCodeWrapper>
                         <S.InputAddress placeholder="07250"/>
-                        <S.BtnAddress type="search">우편번호 검색</S.BtnAddress>
-                    </S.ZipcodeWrapper>
+                        <S.BtnAddress>우편번호 검색</S.BtnAddress>
+                    </S.zipCodeWrapper>
                     <S.Input type="text" id="address" placeholder=""/>
                     <S.Input type="text" id="address" placeholder=""/>
                 </S.InputWrap>
@@ -90,7 +90,7 @@ export default function BoardWriteUI(props){
                 <S.Btn 
                     type="button"
                     onClick={props.isEdit ? props.onClickEditBoard : props.onClickCreateBoard }
-                    isActive={props.isEdit ? true : props.isActive }
+                    // isActive={props.isEdit ? true : props.isActive }
                     disabled={props.isEdit ? false : !props.isActive }
                         //등록하기 Btn 활성화 // 등록하기 일 때만 버튼 활성화 조건 부여 //수정하기는 항상 활성화
                 >{props.isEdit ? "수정" : "등록"}하기</S.Btn>

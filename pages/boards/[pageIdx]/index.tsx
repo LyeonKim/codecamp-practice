@@ -6,7 +6,9 @@ export default function StaticRoutedBoard () {
 
     return ( //[pageIdx]
         <>
-            <BoardDetailCompo />
+            <div className="board">
+                <BoardDetailCompo />
+            </div>
             <CommentWriteCompo />
             <CommentListCompo />
         </>

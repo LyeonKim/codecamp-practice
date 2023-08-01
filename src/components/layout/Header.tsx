@@ -22,16 +22,16 @@ export default function Header(){
                 </S.Util>
             </S.TopWrap> 
 
-            <S.Swiper className="swiper"></S.Swiper>
+            <S.MySwiper></S.MySwiper>
             <S.Gnb className="gnb">
                 <S.Li>
-                    <S.Href isActive={true} href="#">자유게시판</S.Href>
+                    <S.Href href="#">자유게시판</S.Href>
                 </S.Li>
                 <S.Li>
-                    <S.Href isActive={false} href="#">중고마켓</S.Href>
+                    <S.Href href="#">중고마켓</S.Href>
                 </S.Li>
                 <S.Li>
-                    <S.Href isActive={false} href="#">마이페이지</S.Href>
+                    <S.Href href="#">마이페이지</S.Href>
                 </S.Li>
             </S.Gnb>
         </S.Header>

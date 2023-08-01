@@ -49,7 +49,7 @@ export const Sign = styled.a`
     border-radius: 10px;
 `
 
-export const Swiper = styled.div`
+export const MySwiper = styled.div`
     width: 100%;
     flex-grow: 1;
     background: #ddd;
@@ -73,5 +73,5 @@ export const Href = styled.a`
     display: inline-block;
     padding: 0 39px;
     line-height: 64px;
-    opacity: ${(props)=> props.isActive ? 1 : .4 }
 `
+// opacity: ${(props)=> props.isActive ? 1 : .4 }

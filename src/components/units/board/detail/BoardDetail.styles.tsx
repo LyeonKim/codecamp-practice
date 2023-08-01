@@ -8,6 +8,9 @@ export const Hide = styled.span `
     text-indent: -99999px;
 `
 export const BoardWrap = styled.div `
+    min-height: 100px; 
+    border: 1px solid black;
+    
     margin: 80px auto 102px;
     max-width : 1200px;
     min-width : 750px;

@@ -41,13 +41,13 @@ export type IBoardAddress = {
   createdAt: Scalars['DateTime']['output'];
   deletedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt: Scalars['DateTime']['output'];
-  zipcode?: Maybe<Scalars['String']['output']>;
+  zipCode?: Maybe<Scalars['String']['output']>;
 };
 
 export type IBoardAddressInput = {
   address?: InputMaybe<Scalars['String']['input']>;
   addressDetail?: InputMaybe<Scalars['String']['input']>;
-  zipcode?: InputMaybe<Scalars['String']['input']>;
+  zipCode?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type IBoardComment = {
@@ -502,7 +502,7 @@ export type IUseditemAddress = {
   lat?: Maybe<Scalars['Float']['output']>;
   lng?: Maybe<Scalars['Float']['output']>;
   updatedAt: Scalars['DateTime']['output'];
-  zipcode?: Maybe<Scalars['String']['output']>;
+  zipCode?: Maybe<Scalars['String']['output']>;
 };
 
 export type IUseditemAddressInput = {
@@ -510,7 +510,7 @@ export type IUseditemAddressInput = {
   addressDetail?: InputMaybe<Scalars['String']['input']>;
   lat?: InputMaybe<Scalars['Float']['input']>;
   lng?: InputMaybe<Scalars['Float']['input']>;
-  zipcode?: InputMaybe<Scalars['String']['input']>;
+  zipCode?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type IUseditemQuestion = {

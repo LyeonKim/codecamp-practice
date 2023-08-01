@@ -2,9 +2,11 @@ import { useMutation } from "@apollo/client"
 import BoardWriteUI from "./BoardWrite.presenter"
 import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries"
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
+import { IBoardWriteProps } from "./BoardWrite.types";
+import { IUpdateBoardInput } from "../../../../commons/types/generated/types";
 
-export default function BoardWriteCompo(props){
+export default function BoardWriteCompo(props: IBoardWriteProps){
     const router = useRouter();
 
     const [ isActive, setIsActive ] = useState(false);
@@ -17,38 +19,38 @@ export default function BoardWriteCompo(props){
     const [ contents, setContents ] = useState('');
     const [ youtubeUrl, setYoutubeUrl ] = useState('');
     
-    const onChangeWriter = (e) => {
-        setWriter(e.target.value);
+    const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
+        setWriter(event.target.value);
 
-        if(e.target.value && password && title && contents && youtubeUrl != "" ) setIsActive(true);
+        if(event.target.value && password && title && contents && youtubeUrl != "" ) setIsActive(true);
         else setIsActive(false);
     }
 
-    const onChangePassword = (e) => {
-        setPassword(e.target.value);
+    const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
+        setPassword(event.target.value);
 
-        if(e.target.value && writer && title && contents && youtubeUrl != "" ) setIsActive(true);
+        if(event.target.value && writer && title && contents && youtubeUrl != "" ) setIsActive(true);
         else setIsActive(false);
     }
 
-    const onChangeTitle = (e) => {
-        setTitle(e.target.value);
+    const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
+        setTitle(event.target.value);
 
-        if(e.target.value && writer && password && contents && youtubeUrl != "" ) setIsActive(true);
+        if(event.target.value && writer && password && contents && youtubeUrl != "" ) setIsActive(true);
         else setIsActive(false);
     }
 
-    const onChangeContents = (e) => {
-        setContents(e.target.value);
+    const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        setContents(event.target.value);
 
-        if(e.target.value && writer && password && title && youtubeUrl != "" ) setIsActive(true);
+        if(event.target.value && writer && password && title && youtubeUrl != "" ) setIsActive(true);
         else setIsActive(false);
     }
 
-    const onChangeYoutubeUrl = (e) => {
-        setYoutubeUrl(e.target.value);
+    const onChangeYoutubeUrl = (event: ChangeEvent<HTMLInputElement>) => {
+        setYoutubeUrl(event.target.value);
 
-        if(e.target.value && writer && password && title && contents != "" ) setIsActive(true);
+        if(event.target.value && writer && password && title && contents != "" ) setIsActive(true);
         else setIsActive(false);
     }
     
@@ -63,13 +65,14 @@ export default function BoardWriteCompo(props){
                         contents: contents,
                         youtubeUrl: youtubeUrl,
                         // boardAddress: {
-                        //     zipcode: 'aaa', address: 'aaa', addressDetail: 'aaa'
+                        //     zipCode: 'aaa', address: 'aaa', addressDetail: 'aaa'
                         // },
                         images: ['aaa','aaa']
                     }
                 }
             })
             router.push(`/boards/${result.data.createBoard._id}`);
+            console.log('result', result);
 
         } catch(error) {
             alert('게시글 등록에 실패하였습니다.')
@@ -80,10 +83,10 @@ export default function BoardWriteCompo(props){
 
     const onClickEditBoard = async () => { //수정 업데이트
         try {
-            const myVariables = {}
-            if(title) myVariables.title = title;
-            if(contents) myVariables.contents = contents;
-            if(youtubeUrl) myVariables.youtubeUrl = youtubeUrl;
+            const updateBoardInput: IUpdateBoardInput= {}
+            if(title) { updateBoardInput.title = title; }
+            if(contents) { updateBoardInput.contents = contents; }
+            if(youtubeUrl) { updateBoardInput.youtubeUrl = youtubeUrl; }
 
             if(!contents && !title && !youtubeUrl){
                 alert('수정된 내용이 없습니다.')
@@ -91,8 +94,8 @@ export default function BoardWriteCompo(props){
                 const result = await updateBoard({
                     variables: {
                         boardId: String(router.query.pageIdx),
-                        password: password, 
-                        updateBoardInput: myVariables
+                        password: password,
+                        updateBoardInput
                     }
                 })
                 console.log('[Edit]result:',result);

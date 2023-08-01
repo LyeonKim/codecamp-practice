@@ -1,15 +1,15 @@
 import * as S from "./CommentList.styles"
 import { getDate } from "../../../common/libraries/utils";
+import { CommentListUIProps } from "./CommentList.types";
 
-export default function CommentListUI(props) {
-    console.log(props.data?.fetchBoardComments);
+
+export default function CommentListUI(props: CommentListUIProps) { //임시 any
+    // console.log('fetchBoardComments:', props.data?.fetchBoardComments);
     
     return(
         <>
-            <S.CommentListWrap
-                data={props.data}
-            >
-                { props.data?.fetchBoardComments.map((comment) => (
+            <S.CommentListWrap>
+                { props.data?.fetchBoardComments.map((comment:any) => (
                         <S.CommentWrap
                             key={comment._id}
                         >
@@ -27,7 +27,8 @@ export default function CommentListUI(props) {
                                     <S.BtnWrap>
                                         {/* <S.BtnEdit onClick={props.onClickUpdateComment}>댓글 수정</S.BtnEdit> */}
                                         <S.BtnEdit>댓글 수정</S.BtnEdit>
-                                        <S.BtnDelete onClick={props.onClickDeleteComment}>댓글 삭제</S.BtnDelete>
+                                        {/* <S.BtnDelete onClick={props.onClickDeleteComment}>댓글 삭제</S.BtnDelete> */}
+                                        <S.BtnDelete>댓글 삭제</S.BtnDelete>
                                     </S.BtnWrap>    
                                 </S.ContentTopWrap>
                                 <S.Comment>{comment.contents}</S.Comment>
@@ -36,9 +37,7 @@ export default function CommentListUI(props) {
                         </S.CommentWrap>
                     )
                 )}
-
-                
             </S.CommentListWrap>
         </>
     )
-}``
+}
