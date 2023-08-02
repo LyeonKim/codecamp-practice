@@ -9,7 +9,6 @@ export default function CommentWriteCompo() {
     
     const [ createComment ] = useMutation(CREATE_COMMENT);
 
-
     const [ writer, setWriter ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ contents, setContents ] = useState('');
@@ -50,10 +49,8 @@ export default function CommentWriteCompo() {
                 }
             ]
         })
-
         console.log(result)
     }
-
 
 
     return(
