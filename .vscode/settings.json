@@ -1,8 +1,9 @@
 {
-    "typescript.tsdk": "node_modules/typescript/lib",
-    "cSpell.words": [
-        "antd",
-        "codegen",
-        "Swiper"
-    ]
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.words": ["antd", "codegen", "Swiper"],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": false,
+  "editor.detectIndentation": false
 }
