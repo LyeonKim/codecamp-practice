@@ -1,4 +1,6 @@
+import "../styles/reset.css";
 import "../styles/Home.module.css";
+
 import Header from "../src/components/layout/Header";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import type { AppProps } from "next/app";

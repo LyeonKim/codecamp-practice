@@ -6,6 +6,6 @@ export interface CommentWriteUIProps {
   onChangeWriter: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangePassword: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeContents: (event: ChangeEvent<HTMLTextAreaElement>) => void;
-  onChangeRating: (event: ChangeEvent<HTMLInputElement>) => void;
+  setRating: (event: any) => void;
   onClickCreateComment: () => void;
 }

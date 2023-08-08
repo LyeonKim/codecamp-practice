@@ -1,19 +1,26 @@
 import * as S from "./BoardWrite.styles";
 import type { IBoardWriteUIProps } from "./BoardWrite.types";
 
-export default function BoardWriteUI(props: IBoardWriteUIProps) {
-  // console.log('props.data',props.data);
-
+export default function BoardWriteUI(props: IBoardWriteUIProps): JSX.Element {
   return (
     <S.BoardWrap className="wrap">
+      {props.isModalOpen && (
+        <S.AddressModal
+          centered
+          open={true}
+          onOk={props.onClickOpenModal}
+          onCancel={props.onClickOpenModal}
+        >
+          <S.AddressSearchInput onComplete={props.onCompleteAddressSearch} />
+        </S.AddressModal>
+      )}
       <S.Title>게시물 {props.isEdit ? "수정" : "등록"}</S.Title>
       <S.FormWrap>
         <S.RowWrap>
           <S.InputWrap>
             <S.Label htmlFor="writer">작성자</S.Label>
             <S.Input
-              readOnly={props.isEdit ? true : false}
-              disabled={props.isEdit ? true : false}
+              readOnly={props.isEdit}
               onChange={props.onChangeWriter}
               defaultValue={props.data?.fetchBoard.writer}
               type="text"
@@ -25,7 +32,6 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
             <S.Label htmlFor="pwd">비밀번호</S.Label>
             <S.Input
               onChange={props.onChangePassword}
-              // isError={props.isError}
               type="text"
               id="pwd"
               placeholder="비밀번호를 작성해주세요."
@@ -56,10 +62,29 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         <S.InputWrap>
           <S.Label htmlFor="address">주소</S.Label>
           <S.zipCodeWrapper>
-            <S.InputAddress placeholder="07250" />
-            <S.BtnAddress>우편번호 검색</S.BtnAddress>
+            <S.InputAddress
+              placeholder="07250"
+              readOnly
+              value={
+                props.zipcode !== ""
+                  ? props.zipcode
+                  : props.data?.fetchBoard.boardAddress?.zipcode ?? ""
+              }
+            />
+            <S.BtnAddress onClick={props.onClickOpenModal}>
+              우편번호 검색
+            </S.BtnAddress>
           </S.zipCodeWrapper>
-          <S.Input type="text" id="address" placeholder="" />
+          <S.Input
+            type="text"
+            id="address"
+            readOnly
+            value={
+              props.address !== ""
+                ? props.address
+                : props.data?.fetchBoard.boardAddress?.address ?? ""
+            }
+          />
           <S.Input type="text" id="address" placeholder="" />
         </S.InputWrap>
         <S.InputWrap>
@@ -95,7 +120,13 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         <S.InputWrap></S.InputWrap>
       </S.FormWrap>
       <S.ButtonWrap>
-        {props.isEdit ? <S.BtnCancel type="button">취소 하기</S.BtnCancel> : ""}
+        {props.isEdit ? (
+          <S.BtnCancel onClick={props.onClickCancelEdit} type="button">
+            취소 하기
+          </S.BtnCancel>
+        ) : (
+          ""
+        )}
         <S.Btn
           type="button"
           onClick={

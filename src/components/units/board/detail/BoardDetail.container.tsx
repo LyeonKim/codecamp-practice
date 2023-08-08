@@ -21,10 +21,20 @@ export default function BoardDetailCompo() {
   );
 
   const onClickEditBoard = () => {
-    void router.push(`/boards/${router.query.boardId}/edit`);
+    void router.push(`/boards/${router.query.pageIdx}/edit`);
+    console.log(data?.fetchBoard);
+  };
+  const onClickMoveToBoardList = () => {
+    void router.push(`/boards`);
   };
 
-  console.log("fetchBoard:");
+  console.log("fetchBoard:", data);
 
-  return <BoardDetailUI data={data} onClickEditBoard={onClickEditBoard} />;
+  return (
+    <BoardDetailUI
+      data={data}
+      onClickEditBoard={onClickEditBoard}
+      onClickMoveToBoardList={onClickMoveToBoardList}
+    />
+  );
 }

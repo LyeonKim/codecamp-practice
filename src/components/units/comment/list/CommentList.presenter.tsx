@@ -1,6 +1,7 @@
 import * as S from "./CommentList.styles";
 import { getDate } from "../../../common/libraries/utils";
 import type { CommentListUIProps } from "./CommentList.types";
+import { Rate } from "antd";
 
 export default function CommentListUI(props: CommentListUIProps) {
   // 임시 any
@@ -19,7 +20,10 @@ export default function CommentListUI(props: CommentListUIProps) {
                 <S.Left>
                   <S.Name>{comment.writer}</S.Name>
                   <S.Ratings>
-                    <S.Rate>{comment.rating}</S.Rate>
+                    <S.Rate>
+                      <Rate disabled defaultValue={comment.rating} />
+                      &nbsp; {comment.rating}
+                    </S.Rate>
                   </S.Ratings>
                 </S.Left>
                 <S.BtnWrap>
